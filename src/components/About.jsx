@@ -1,28 +1,50 @@
+import { useState } from 'react';
 import { C, serif, sans, mono } from '../tokens.js';
 import { Reveal, GeoBorder, HandUnderline, SectionLabel } from './ui.jsx';
 import { SOCIALS, BOOKING_URL } from '../config.js';
 
 const STATS = [
-  { value: '7+',   label: 'years · financial\ninfrastructure' },
-  { value: '4',    label: 'markets · treasury\noperations' },
-  { value: '60+',  label: 'people\ncoordinated' },
-  { value: '2016', label: 'est. ·\nMotitomi' },
+  { value: '1000+', label: 'sessions ·\nfacilitated'           },
+  { value: '100+',  label: 'reflections ·\npublished'          },
+  { value: '10+',   label: 'years · building\ncomplex systems' },
+  { value: '5',     label: 'markets ·\noperational footprint'  },
 ];
 
-const SOCIAL_SYMBOLS = {
-  linkedin:  'in',
-  instagram: '◉',
-  tiktok:    'tt',
-  notion:    '◇',
+const ICONS = {
+  linkedin: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+      <circle cx="4" cy="4" r="2"/>
+    </svg>
+  ),
+  instagram: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <rect x="2" y="2" width="20" height="20" rx="5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+    </svg>
+  ),
+  tiktok: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.95a8.2 8.2 0 004.79 1.53V7.01a4.85 4.85 0 01-1.02-.32z"/>
+    </svg>
+  ),
+  notion: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M4 4h16v2L8 18h12v2H4v-2L16 6H4z"/>
+    </svg>
+  ),
 };
 
 export default function About() {
+  const [hovered, setHovered] = useState(null);
+
   return (
     <section id="about" style={{ padding: '80px 24px 0', scrollMarginTop: 56 }}>
       <div style={{ maxWidth: 1060, margin: '0 auto' }}>
         <GeoBorder color={C.terracotta} height={22} style={{ marginBottom: 56 }} />
 
-        <div style={{
+        <div className="about-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'minmax(240px, 320px) 1fr',
           gap: '48px 60px',
@@ -31,7 +53,7 @@ export default function About() {
 
           {/* Portrait */}
           <Reveal>
-            <div style={{ position: 'sticky', top: 76 }}>
+            <div className="about-portrait" style={{ position: 'sticky', top: 76 }}>
               <div style={{
                 aspectRatio: '3/4', overflow: 'hidden',
                 border: `1px solid ${C.cream}`,
@@ -68,16 +90,19 @@ export default function About() {
 
             <Reveal delay={0.08}>
               <p style={{ fontFamily: serif, fontSize: 'clamp(14px, 1.8vw, 17px)', lineHeight: 1.85, color: C.inkMid, margin: '24px 0 16px' }}>
-                I'm Tomi — operations executive, community architect, poet and civic organizer based in Lagos, Nigeria. For nearly a decade, I've built the systems that keep complex organizations running: from treasury operations across four African markets to the infrastructure of Paystack's Project Management Office.
+                Lagos teaches you to build for uncertainty. I've been doing that professionally and personally for nearly a decade.
+              </p>
+              <p style={{ fontFamily: serif, fontSize: 'clamp(14px, 1.8vw, 17px)', lineHeight: 1.85, color: C.inkMid, marginBottom: 16 }}>
+                At Paystack I've built invisible systems that keep complex organisations running — from treasury infrastructure across five African markets to launching a Microfinance bank from scratch. Through Motitomi I've built the spaces where people in this city can think, gather, and make things together.
               </p>
               <p style={{ fontFamily: serif, fontStyle: 'italic', fontSize: 'clamp(13px, 1.6vw, 16px)', lineHeight: 1.85, color: C.inkLight, marginBottom: 32 }}>
-                I care deeply about how things are made, who gets to make them, and what gets built when people have enough room to think. That's why I build financial systems and community spaces with the same rigour — because the through-line is always intentionality.
+                I'm an artist, organiser, and obsessive learner who believes the best systems — financial or human — are designed with care for the people inside them. That's why a compliance framework and a community gathering get the same attention from me. The through-line is always intentionality.
               </p>
             </Reveal>
 
             {/* Stats */}
             <Reveal delay={0.12}>
-              <div style={{
+              <div className="about-stats" style={{
                 display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
                 gap: 20, borderTop: `1px solid ${C.cream}`,
                 borderBottom: `1px solid ${C.cream}`, padding: '24px 0', marginBottom: 32,
@@ -99,19 +124,40 @@ export default function About() {
             <Reveal delay={0.16}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
                 {SOCIALS.map((s) => (
-                  <a key={s.key} href={s.href} target="_blank" rel="noopener noreferrer"
-                    title={s.label}
-                    style={{
-                      width: 38, height: 38, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      border: `1px solid ${C.cream}`, textDecoration: 'none',
-                      fontFamily: mono, fontSize: 10, letterSpacing: '1px', color: C.inkMid,
-                      transition: 'all 0.2s ease',
-                    }}
-                    onMouseOver={e => { e.currentTarget.style.borderColor = C.ochre; e.currentTarget.style.color = C.ochre; }}
-                    onMouseOut={e => { e.currentTarget.style.borderColor = C.cream; e.currentTarget.style.color = C.inkMid; }}
+                  <div key={s.key} style={{ position: 'relative' }}
+                    onMouseEnter={() => setHovered(s.key)}
+                    onMouseLeave={() => setHovered(null)}
                   >
-                    {SOCIAL_SYMBOLS[s.key] || s.label[0]}
-                  </a>
+                    <a
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={s.label}
+                      style={{
+                        width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        border: `1px solid ${C.cream}`, textDecoration: 'none',
+                        color: C.inkMid, transition: 'all 0.2s ease',
+                      }}
+                      onMouseOver={e => { e.currentTarget.style.borderColor = C.ochre; e.currentTarget.style.color = C.ochre; }}
+                      onMouseOut={e => { e.currentTarget.style.borderColor = C.cream; e.currentTarget.style.color = C.inkMid; }}
+                    >
+                      {ICONS[s.key]}
+                    </a>
+                    {hovered === s.key && (
+                      <div style={{
+                        position: 'absolute', bottom: 'calc(100% + 6px)', left: '50%',
+                        transform: 'translateX(-50%)',
+                        background: C.ink, color: C.paper,
+                        fontFamily: mono, fontSize: 8, letterSpacing: '2px',
+                        textTransform: 'uppercase', padding: '4px 10px',
+                        whiteSpace: 'nowrap', pointerEvents: 'none',
+                        animation: 'fadeUp 0.15s ease-out',
+                        zIndex: 10,
+                      }}>
+                        {s.label}
+                      </div>
+                    )}
+                  </div>
                 ))}
                 <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer"
                   style={{
@@ -155,6 +201,14 @@ export default function About() {
             </p>
           </div>
         </Reveal>
+
+        <style>{`
+          @media (max-width: 640px) {
+            .about-grid     { grid-template-columns: 1fr !important; }
+            .about-portrait { position: static !important; }
+            .about-stats    { grid-template-columns: repeat(2, 1fr) !important; }
+          }
+        `}</style>
       </div>
     </section>
   );
