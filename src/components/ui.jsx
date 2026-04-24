@@ -92,7 +92,7 @@ export function TickerTape() {
     <div style={{ background: C.indigo, overflow: 'hidden', padding: '9px 0' }}>
       <div className="ticker-inner" style={{ display: 'flex', animation: 'tickerScroll 40s linear infinite', whiteSpace: 'nowrap' }}>
         {[0, 1, 2].map((i) => (
-          <span key={i} style={{ fontFamily: mono, fontSize: 9, letterSpacing: '3.5px', textTransform: 'uppercase', color: C.ochreLight, paddingRight: 60, flexShrink: 0 }}>
+          <span key={i} style={{ fontFamily: mono, fontSize: 9, letterSpacing: '3.5px', textTransform: 'uppercase', color: C.ochreLight, flexShrink: 0 }}>
             {text}
           </span>
         ))}
