@@ -2,7 +2,19 @@ import { useState, useEffect } from 'react';
 import { C, serif, sans, mono } from '../tokens.js';
 import { GeoBorder, TickerTape } from './ui.jsx';
 
-const GREETINGS = ['Ẹ kú àbọ̀', 'Welcome', 'Kú ilé', 'Hello'];
+const GREETINGS = [
+  { text: 'Ẹ káàbọ̀',  lang: 'Yoruba',     dir: 'ltr', script: 'latin'  },
+  { text: 'Ẹ kúlé',    lang: 'Yoruba',     dir: 'ltr', script: 'latin'  },
+  { text: 'Welcome',   lang: 'English',    dir: 'ltr', script: 'latin'  },
+  { text: 'Hello',     lang: 'English',    dir: 'ltr', script: 'latin'  },
+  { text: '你好',       lang: 'Mandarin',   dir: 'ltr', script: 'cjk'    },
+  { text: 'Bonjour',   lang: 'French',     dir: 'ltr', script: 'latin'  },
+  { text: 'Karibu',    lang: 'Swahili',    dir: 'ltr', script: 'latin'  },
+  { text: 'أهلاً',     lang: 'Arabic',     dir: 'rtl', script: 'arabic' },
+  { text: 'Hola',      lang: 'Spanish',    dir: 'ltr', script: 'latin'  },
+  { text: 'Olá',       lang: 'Portuguese', dir: 'ltr', script: 'latin'  },
+  { text: 'Ciao',      lang: 'Italian',    dir: 'ltr', script: 'latin'  },
+];
 
 export default function Hero() {
   const [idx, setIdx]   = useState(0);
@@ -11,7 +23,7 @@ export default function Hero() {
   useEffect(() => {
     const iv = setInterval(() => {
       setFade(false);
-      setTimeout(() => { setIdx(i => (i + 1) % GREETINGS.length); setFade(true); }, 380);
+      setTimeout(() => { setIdx(i => (i + 1) % GREETINGS.length); setFade(true); }, 400);
     }, 3000);
     return () => clearInterval(iv);
   }, []);
@@ -25,18 +37,37 @@ export default function Hero() {
         <div style={{ maxWidth: 640 }}>
 
           {/* Greeting */}
-          <div style={{ marginBottom: 16, animation: 'fadeUp 0.7s 0.05s ease-out both' }}>
-            <span style={{
-              fontFamily: serif, fontStyle: 'italic',
-              fontSize: 'clamp(14px, 2vw, 17px)', color: C.terracotta,
-              opacity: fade ? 1 : 0,
-              transform: fade ? 'translateY(0)' : 'translateY(-5px)',
-              transition: 'opacity 0.38s ease, transform 0.38s ease',
-              display: 'inline-block',
-            }}>
-              {GREETINGS[idx]}
-            </span>
-          </div>
+          {(() => {
+            const g = GREETINGS[idx];
+            const fontFamily = g.script === 'cjk'    ? "'Noto Serif SC', system-ui, serif"
+                             : g.script === 'arabic' ? "system-ui, serif"
+                             : serif;
+            return (
+              <div style={{ marginBottom: 16, animation: 'fadeUp 0.7s 0.05s ease-out both' }}>
+                <span dir={g.dir} style={{
+                  fontFamily,
+                  fontStyle: g.script === 'latin' ? 'italic' : 'normal',
+                  fontSize: g.script === 'cjk' ? 'clamp(16px, 2.4vw, 20px)' : 'clamp(14px, 2vw, 17px)',
+                  color: C.terracotta,
+                  opacity: fade ? 1 : 0,
+                  transform: fade ? 'translateY(0)' : 'translateY(-5px)',
+                  transition: 'opacity 0.38s ease, transform 0.38s ease',
+                  display: 'block',
+                }}>
+                  {g.text}
+                </span>
+                <span style={{
+                  fontFamily: mono, fontSize: 8, letterSpacing: '3px',
+                  textTransform: 'uppercase', color: C.inkFaint,
+                  marginTop: 5, display: 'block',
+                  opacity: fade ? 0.7 : 0,
+                  transition: 'opacity 0.38s ease',
+                }}>
+                  — {g.lang}
+                </span>
+              </div>
+            );
+          })()}
 
           {/* Full name — small */}
           <div style={{
