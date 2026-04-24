@@ -87,7 +87,7 @@ export function Tag({ label, color = C.ochre }) {
 }
 
 export function TickerTape() {
-  const text = 'Build · Gather · Advocate     ◇ Lagos, Nigeria ◇     Operations · Community · Poetry     ◆ Est. 2016 ◆     Systems Thinker · Space Maker     ◇ Motitomi ◇     Made with intention     ◆ Portfolio & Practice ◆     ';
+  const text = 'Build · Advocate · Gather     ◇ Lagos, Nigeria ◇     Operations · Art · Community     ◆ Est. 1998 ◆     Systems Thinker · Space Maker ·     ◇ Founder, Motitomi ◇     Made with intention     ◆ Portfolio & Practice ◆     ';
   return (
     <div style={{ background: C.indigo, overflow: 'hidden', padding: '9px 0' }}>
       <div style={{ display: 'flex', animation: 'tickerScroll 40s linear infinite', whiteSpace: 'nowrap' }}>
