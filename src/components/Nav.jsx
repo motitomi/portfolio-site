@@ -63,41 +63,32 @@ export default function Nav() {
           </button>
 
           {/* Desktop links */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 4, ['@media(max-width:640px)']: { display: 'none' } }} className="nav-desktop">
+          <div style={{ display: 'flex', alignItems: 'center', gap: 2 }} className="nav-desktop">
             {LINKS.map((l) => {
               const isActive = active === l.id;
               return (
-                <div key={l.id} style={{ position: 'relative' }}>
-                  <button
-                    onClick={() => scrollTo(l.id)}
-                    onMouseEnter={() => setTooltip(l.id)}
-                    onMouseLeave={() => setTooltip(null)}
-                    style={{
-                      background: 'none', border: 'none', padding: '8px 14px', position: 'relative',
-                      fontFamily: mono, fontSize: 14, letterSpacing: '1px',
-                      color: isActive ? C.ochre : C.inkLight,
-                      transition: 'color 0.2s ease',
-                    }}
-                  >
+                <button
+                  key={l.id}
+                  onClick={() => scrollTo(l.id)}
+                  style={{
+                    background: 'none', border: 'none',
+                    borderBottom: isActive ? `2px solid ${C.ochre}` : '2px solid transparent',
+                    padding: '0 14px', height: 56,
+                    display: 'flex', alignItems: 'center', gap: 6,
+                    color: isActive ? C.ochre : C.inkMid,
+                    transition: 'color 0.2s ease, border-color 0.2s ease',
+                    cursor: 'pointer',
+                  }}
+                  onMouseEnter={e => { if (!isActive) e.currentTarget.style.color = C.ink; }}
+                  onMouseLeave={e => { if (!isActive) e.currentTarget.style.color = C.inkMid; }}
+                >
+                  <span style={{ fontFamily: mono, fontSize: 12, lineHeight: 1, opacity: isActive ? 1 : 0.55 }}>
                     {l.symbol}
-                    {isActive && (
-                      <span style={{
-                        position: 'absolute', bottom: 4, left: '50%', transform: 'translateX(-50%)',
-                        width: 4, height: 4, borderRadius: '50%', background: C.ochre, display: 'block',
-                      }} />
-                    )}
-                  </button>
-                  {tooltip === l.id && (
-                    <div style={{
-                      position: 'absolute', top: 'calc(100% + 6px)', left: '50%', transform: 'translateX(-50%)',
-                      background: C.ink, color: C.paper, fontFamily: mono, fontSize: 8,
-                      letterSpacing: '2px', textTransform: 'uppercase', padding: '4px 10px',
-                      whiteSpace: 'nowrap', pointerEvents: 'none', animation: 'slideDown 0.15s ease-out',
-                    }}>
-                      {l.label}
-                    </div>
-                  )}
-                </div>
+                  </span>
+                  <span style={{ fontFamily: mono, fontSize: 9, letterSpacing: '2.5px', textTransform: 'uppercase', lineHeight: 1 }}>
+                    {l.label}
+                  </span>
+                </button>
               );
             })}
 
