@@ -14,6 +14,7 @@ export default function Nav() {
   const [active, setActive]       = useState('');
   const [tooltip, setTooltip]     = useState(null);
   const [menuOpen, setMenuOpen]   = useState(false);
+  const [pressed, setPressed]     = useState(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -70,17 +71,20 @@ export default function Nav() {
                 <button
                   key={l.id}
                   onClick={() => scrollTo(l.id)}
+                  onMouseDown={() => setPressed(l.id)}
+                  onMouseUp={() => setPressed(null)}
+                  onMouseLeave={e => { setPressed(null); if (!isActive) e.currentTarget.style.color = C.inkMid; }}
+                  onMouseEnter={e => { if (!isActive) e.currentTarget.style.color = C.ink; }}
                   style={{
                     background: 'none', border: 'none',
                     borderBottom: isActive ? `2px solid ${C.ochre}` : '2px solid transparent',
                     padding: '0 14px', height: 56,
                     display: 'flex', alignItems: 'center', gap: 6,
                     color: isActive ? C.ochre : C.inkMid,
-                    transition: 'color 0.2s ease, border-color 0.2s ease',
+                    transform: pressed === l.id ? 'translateY(1px) scale(0.97)' : 'none',
+                    transition: 'color 0.2s ease, border-color 0.2s ease, transform 0.1s ease',
                     cursor: 'pointer',
                   }}
-                  onMouseEnter={e => { if (!isActive) e.currentTarget.style.color = C.ink; }}
-                  onMouseLeave={e => { if (!isActive) e.currentTarget.style.color = C.inkMid; }}
                 >
                   <span style={{ fontFamily: mono, fontSize: 12, lineHeight: 1, opacity: isActive ? 1 : 0.55 }}>
                     {l.symbol}
