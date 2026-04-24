@@ -56,15 +56,6 @@ export default function Hero() {
                 }}>
                   {g.text}
                 </span>
-                <span style={{
-                  fontFamily: mono, fontSize: 8, letterSpacing: '3px',
-                  textTransform: 'uppercase', color: C.inkFaint,
-                  marginTop: 5, display: 'block',
-                  opacity: fade ? 0.7 : 0,
-                  transition: 'opacity 0.38s ease',
-                }}>
-                  — {g.lang}
-                </span>
               </div>
             );
           })()}
@@ -107,14 +98,26 @@ export default function Hero() {
 
           {/* Scroll hint */}
           <div style={{
-            marginTop: 52, fontFamily: mono, fontSize: 9, letterSpacing: '3px',
-            textTransform: 'uppercase', color: C.inkFaint,
-            display: 'flex', alignItems: 'center', gap: 10,
+            marginTop: 52, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 6,
             animation: 'fadeUp 0.8s 0.55s ease-out both',
           }}>
-            <span style={{ animation: 'pulse 2.5s ease-in-out infinite' }}>◇</span>
-            <span>Scroll to explore</span>
+            <span style={{
+              fontFamily: mono, fontSize: 9, letterSpacing: '3px',
+              textTransform: 'uppercase', color: C.inkFaint,
+            }}>Scroll to explore</span>
+            <span style={{
+              fontSize: 18, color: C.ochre,
+              animation: 'bounceY 1.8s ease-in-out infinite',
+              display: 'block', lineHeight: 1,
+            }}>↓</span>
           </div>
+
+          <style>{`
+            @keyframes bounceY {
+              0%, 100% { transform: translateY(0);    opacity: 1;   }
+              50%       { transform: translateY(6px); opacity: 0.6; }
+            }
+          `}</style>
         </div>
       </section>
     </div>
