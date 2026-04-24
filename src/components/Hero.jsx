@@ -79,7 +79,7 @@ export default function Hero() {
             animation: 'fadeUp 0.8s 0.38s ease-out both',
           }}>
             Systems thinker. Culture keeper. Organiser. Storyteller —{' '}
-            <em style={{ color: C.terracotta, fontStyle: 'normal', fontWeight: 600 }}>I cultivate beautiful excellence everywhere I go.</em>
+            <em style={{ color: C.terracotta, fontStyle: 'normal', fontWeight: 600 }}>I cultivate beautiful excellence.</em>
           </p>
 
           {/* Scroll hint */}
