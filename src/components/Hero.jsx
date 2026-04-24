@@ -44,7 +44,7 @@ export default function Hero() {
                              : serif;
             return (
               <div style={{ marginBottom: 16, animation: 'fadeUp 0.7s 0.05s ease-out both' }}>
-                <span dir={g.dir} style={{
+                <span style={{
                   fontFamily,
                   fontStyle: g.script === 'latin' ? 'italic' : 'normal',
                   fontSize: g.script === 'cjk' ? 'clamp(16px, 2.4vw, 20px)' : 'clamp(14px, 2vw, 17px)',
