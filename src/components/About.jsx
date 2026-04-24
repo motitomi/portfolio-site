@@ -7,7 +7,7 @@ const STATS = [
   { value: '1000+', label: 'sessions ·\nfacilitated'           },
   { value: '100+',  label: 'reflections ·\npublished'          },
   { value: '10+',   label: 'years · building\ncomplex systems' },
-  { value: '5',     label: 'markets ·\noperational footprint'  },
+  { value: '5',     label: 'markets managed ·\noperations footprint' },
 ];
 
 const ICONS = {
@@ -29,9 +29,9 @@ const ICONS = {
       <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.95a8.2 8.2 0 004.79 1.53V7.01a4.85 4.85 0 01-1.02-.32z"/>
     </svg>
   ),
-  notion: (
+  substack: (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M4 4h16v2L8 18h12v2H4v-2L16 6H4z"/>
+      <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
     </svg>
   ),
 };
@@ -79,11 +79,8 @@ export default function About() {
           <div>
             <Reveal>
               <SectionLabel color={C.terracotta}>About</SectionLabel>
-              <h2 style={{ fontFamily: serif, fontWeight: 700, fontSize: 'clamp(32px, 4vw, 48px)', color: C.ink, lineHeight: 1.05, margin: '0 0 6px' }}>
+              <h2 style={{ fontFamily: serif, fontWeight: 700, fontSize: 'clamp(32px, 4vw, 48px)', color: C.ink, lineHeight: 1.05, margin: '0 0 24px' }}>
                 Building things
-              </h2>
-              <h2 style={{ fontFamily: serif, fontWeight: 400, fontStyle: 'italic', fontSize: 'clamp(22px, 3vw, 34px)', color: C.inkMid, lineHeight: 1, margin: '0 0 24px' }}>
-                that endure.
               </h2>
               <HandUnderline color={C.terracotta} width={160} />
             </Reveal>
@@ -96,7 +93,7 @@ export default function About() {
                 At Paystack I've built invisible systems that keep complex organisations running — from treasury infrastructure across five African markets to launching a Microfinance bank from scratch. Through Motitomi I've built the spaces where people in this city can think, gather, and make things together.
               </p>
               <p style={{ fontFamily: serif, fontStyle: 'italic', fontSize: 'clamp(13px, 1.6vw, 16px)', lineHeight: 1.85, color: C.inkLight, marginBottom: 32 }}>
-                I'm an artist, organiser, and obsessive learner who believes the best systems — financial or human — are designed with care for the people inside them. That's why a compliance framework and a community gathering get the same attention from me. The through-line is always intentionality.
+                I'm an artist, organiser, and obsessive learner who believes the best systems — financial or human — are designed with care. That is why a compliance framework and a craft workshop get the same attention from me because I love to design with intentionality.
               </p>
             </Reveal>
 
@@ -200,6 +197,11 @@ export default function About() {
               This practice is rooted in the belief that self-sufficiency isn't isolation — it's the foundation from which real generosity and collaboration become possible.
             </p>
           </div>
+        </Reveal>
+
+        {/* Section close border */}
+        <Reveal delay={0.05}>
+          <GeoBorder color={C.ochre} height={22} style={{ marginTop: 72 }} />
         </Reveal>
 
         <style>{`

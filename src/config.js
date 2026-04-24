@@ -5,5 +5,5 @@ export const SOCIALS = [
   { key: 'linkedin',  label: 'LinkedIn',  href: 'https://linkedin.com/in/adesina-tomi' },
   { key: 'instagram', label: 'Instagram', href: 'https://instagram.com/motitomi_' },
   { key: 'tiktok',    label: 'TikTok',    href: 'https://tiktok.com/@tomiadesina_' },
-  { key: 'notion',    label: 'Notion',    href: 'https://motitomi.notion.site' },
+  { key: 'substack',  label: 'Substack',  href: 'https://substack.com/@olaoluwatomiadesina' },
 ];
