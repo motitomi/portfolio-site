@@ -57,10 +57,25 @@ export default function Nav() {
           {/* Wordmark */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            style={{ background: 'none', border: 'none', display: 'flex', alignItems: 'baseline', gap: 7, padding: 0 }}
+            onMouseEnter={e => e.currentTarget.querySelector('.ta-stamp').style.borderColor = C.terracotta}
+            onMouseLeave={e => e.currentTarget.querySelector('.ta-stamp').style.borderColor = C.ochre}
+            style={{ background: 'none', border: 'none', display: 'flex', alignItems: 'center', gap: 10, padding: 0, cursor: 'pointer' }}
           >
-            <span style={{ fontFamily: serif, fontWeight: 700, fontSize: 18, color: C.ink, lineHeight: 1 }}>Tomi</span>
-            <span style={{ fontFamily: mono, fontSize: 8, letterSpacing: '2.5px', textTransform: 'uppercase', color: C.inkFaint }}>Adesina</span>
+            {/* Monogram stamp */}
+            <div className="ta-stamp" style={{
+              width: 28, height: 28,
+              border: `1px solid ${C.ochre}`,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              flexShrink: 0,
+              transition: 'border-color 0.2s ease',
+            }}>
+              <span style={{ fontFamily: mono, fontSize: 8, letterSpacing: '1px', color: C.ochre, lineHeight: 1 }}>T·A</span>
+            </div>
+            {/* Name */}
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}>
+              <span style={{ fontFamily: serif, fontWeight: 700, fontSize: 18, color: C.ink, lineHeight: 1 }}>Tomi</span>
+              <span style={{ fontFamily: mono, fontSize: 8, letterSpacing: '2.5px', textTransform: 'uppercase', color: C.inkFaint }}>Adesina</span>
+            </div>
           </button>
 
           {/* Desktop links */}
