@@ -80,7 +80,7 @@ export default function Hero() {
           }}>
             Systems thinker. Culture keeper.<br />
             Organiser. Storyteller —{' '}
-            <em style={{ color: C.terracotta, fontStyle: 'normal', fontWeight: 600 }}>I cultivate beautiful excellence.</em>
+            <em style={{ color: C.terracotta, fontStyle: 'normal', fontWeight: 600 }}>I cultivate excellence.</em>
           </p>
 
           {/* Scroll hint */}
