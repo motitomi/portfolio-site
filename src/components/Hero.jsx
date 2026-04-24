@@ -60,20 +60,6 @@ export default function Hero() {
             );
           })()}
 
-          {/* Full name — scrolling ticker */}
-          <div style={{ overflow: 'hidden', marginBottom: 14, animation: 'fadeUp 0.7s 0.12s ease-out both' }}>
-            <div style={{ display: 'flex', animation: 'tickerScroll 45s linear infinite', whiteSpace: 'nowrap' }}>
-              {[0, 1, 2].map((i) => (
-                <span key={i} style={{
-                  fontFamily: mono, fontSize: 9.5, letterSpacing: '3.5px',
-                  textTransform: 'uppercase', color: C.inkFaint, paddingRight: 48, flexShrink: 0,
-                }}>
-                  {'Build · Advocate · Gather     ◇ Lagos, Nigeria ◇     Operations · Art · Community     ◆ Olaoluwatomi Adesina ◆     Systems Thinker · Space Maker     ◇ Founder, Motitomi ◇     Portfolio & Practice     ◆ Made with intention ◆     '}
-                </span>
-              ))}
-            </div>
-          </div>
-
           {/* Name display */}
           <h1 style={{
             fontFamily: serif, fontWeight: 700,
