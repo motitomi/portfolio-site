@@ -71,11 +71,6 @@ export default function Nav() {
             }}>
               <span style={{ fontFamily: mono, fontSize: 8, letterSpacing: '1px', color: C.ochre, lineHeight: 1 }}>T·A</span>
             </div>
-            {/* Name */}
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}>
-              <span style={{ fontFamily: serif, fontWeight: 700, fontSize: 18, color: C.ink, lineHeight: 1 }}>Tomi</span>
-              <span style={{ fontFamily: mono, fontSize: 8, letterSpacing: '2.5px', textTransform: 'uppercase', color: C.inkFaint }}>Adesina</span>
-            </div>
           </button>
 
           {/* Desktop links */}
