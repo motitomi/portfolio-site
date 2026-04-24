@@ -81,33 +81,23 @@ export default function Hero() {
           {/* Name display */}
           <h1 style={{
             fontFamily: serif, fontWeight: 700,
-            fontSize: 'clamp(56px, 10vw, 104px)',
-            lineHeight: 0.88, letterSpacing: '-3px',
-            color: C.ink, margin: 0,
+            fontSize: 'clamp(48px, 8vw, 88px)',
+            lineHeight: 0.92, letterSpacing: '-2px',
+            color: C.ink, margin: '0 0 32px',
             animation: 'fadeUp 0.8s 0.2s ease-out both',
           }}>
-            Tomi
-          </h1>
-          <h1 style={{
-            fontFamily: serif, fontWeight: 400, fontStyle: 'italic',
-            fontSize: 'clamp(28px, 5vw, 56px)',
-            color: C.inkMid, lineHeight: 1, margin: '6px 0 32px',
-            animation: 'fadeUp 0.8s 0.28s ease-out both',
-          }}>
-            Adesina.
+            Tomi Adesina.
           </h1>
 
           {/* Tagline */}
           <p style={{
             fontFamily: serif, fontStyle: 'italic',
             fontSize: 'clamp(15px, 2.2vw, 20px)', lineHeight: 1.7,
-            color: C.inkLight, maxWidth: 480,
+            color: C.inkMid, maxWidth: 480,
             animation: 'fadeUp 0.8s 0.38s ease-out both',
           }}>
-            Operations executive. Community architect.
-            <br />Poet & civic organizer — building systems
-            <br />for how things work{' '}
-            <em style={{ color: C.terracotta, fontStyle: 'normal', fontWeight: 600 }}>and why they matter.</em>
+            Systems thinker. Culture keeper. Convener of good things — making things work and making them mean{' '}
+            <em style={{ color: C.terracotta, fontStyle: 'normal', fontWeight: 600 }}>something beautiful.</em>
           </p>
 
           {/* Scroll hint */}
