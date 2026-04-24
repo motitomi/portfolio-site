@@ -78,7 +78,8 @@ export default function Hero() {
             color: C.inkMid, maxWidth: 480,
             animation: 'fadeUp 0.8s 0.38s ease-out both',
           }}>
-            Systems thinker. Culture keeper. Organiser. Storyteller —{' '}
+            Systems thinker. Culture keeper.<br />
+            Organiser. Storyteller —{' '}
             <em style={{ color: C.terracotta, fontStyle: 'normal', fontWeight: 600 }}>I cultivate beautiful excellence.</em>
           </p>
 

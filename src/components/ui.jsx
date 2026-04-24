@@ -90,13 +90,18 @@ export function TickerTape() {
   const text = 'Build · Advocate · Gather     ◇ Lagos, Nigeria ◇     Operations · Art · Community     ◆ Olaoluwatomi Adesina ◆     Systems Thinker · Space Maker     ◇ Founder, Motitomi ◇     Portfolio & Practice     ◆ Made with intention ◆     ';
   return (
     <div style={{ background: C.indigo, overflow: 'hidden', padding: '9px 0' }}>
-      <div style={{ display: 'flex', animation: 'tickerScroll 40s linear infinite', whiteSpace: 'nowrap' }}>
+      <div className="ticker-inner" style={{ display: 'flex', animation: 'tickerScroll 40s linear infinite', whiteSpace: 'nowrap' }}>
         {[0, 1, 2].map((i) => (
           <span key={i} style={{ fontFamily: mono, fontSize: 9, letterSpacing: '3.5px', textTransform: 'uppercase', color: C.ochreLight, paddingRight: 60, flexShrink: 0 }}>
             {text}
           </span>
         ))}
       </div>
+      <style>{`
+        @media (max-width: 640px) {
+          .ticker-inner { animation-duration: 20s !important; }
+        }
+      `}</style>
     </div>
   );
 }
