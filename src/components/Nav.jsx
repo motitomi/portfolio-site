@@ -118,7 +118,7 @@ export default function Nav() {
                   letterSpacing: '2px', textTransform: 'uppercase', padding: '4px 10px',
                   whiteSpace: 'nowrap', pointerEvents: 'none', animation: 'slideDown 0.15s ease-out',
                 }}>
-                  15 min · no agenda
+                  15 min · no agenda · talk to me
                 </div>
               )}
             </div>
