@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { C, serif, sans, mono } from '../tokens.js';
+import { C, serif, mono } from '../tokens.js';
 import { Reveal, GeoBorder, HandUnderline, SectionLabel } from './ui.jsx';
 import { SOCIALS, BOOKING_URL } from '../config.js';
 
@@ -173,31 +173,6 @@ export default function About() {
             </Reveal>
           </div>
         </div>
-
-        {/* Motitomi origin block */}
-        <Reveal delay={0.1}>
-          <div style={{
-            margin: '72px auto 0', maxWidth: 640, textAlign: 'center',
-            padding: '48px 32px', borderTop: `1px solid ${C.cream}`,
-          }}>
-            <div style={{ fontFamily: mono, fontSize: 8.5, letterSpacing: '4px', textTransform: 'uppercase', color: C.terracotta, marginBottom: 14 }}>
-              Origin
-            </div>
-            <h3 style={{ fontFamily: serif, fontWeight: 700, fontSize: 'clamp(28px, 4vw, 40px)', color: C.ink, marginBottom: 4 }}>
-              Motitomi
-            </h3>
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
-              <HandUnderline color={C.ochre} width={100} />
-            </div>
-            <p style={{ fontFamily: serif, fontStyle: 'italic', fontSize: 'clamp(15px, 2vw, 18px)', lineHeight: 1.8, color: C.inkMid }}>
-              In Yoruba, <strong style={{ color: C.ink }}>Tomi</strong> means "enough for me."
-              <br /><strong style={{ color: C.terracotta }}>Motitomi</strong> — "I have become enough for myself."
-            </p>
-            <p style={{ fontFamily: sans, fontSize: 14, lineHeight: 1.85, color: C.inkLight, maxWidth: 420, margin: '16px auto 0' }}>
-              This practice is rooted in the belief that self-sufficiency isn't isolation — it's the foundation from which real generosity and collaboration become possible.
-            </p>
-          </div>
-        </Reveal>
 
         {/* Section close border */}
         <Reveal delay={0.05}>

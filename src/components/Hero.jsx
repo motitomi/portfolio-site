@@ -76,7 +76,7 @@ export default function Hero() {
           <p style={{
             fontFamily: serif, fontStyle: 'italic',
             fontSize: 'clamp(15px, 2.2vw, 24px)', lineHeight: 1.7,
-            color: C.inkMid, maxWidth: 480,
+            color: C.inkMid,
             animation: 'fadeUp 0.8s 0.38s ease-out both',
           }}>
             Systems thinker. Culture keeper.<br />

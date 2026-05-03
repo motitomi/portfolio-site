@@ -3,10 +3,7 @@ import { C, serif, mono } from '../tokens.js';
 import { BOOKING_URL } from '../config.js';
 
 const LINKS = [
-  { id: 'about',   symbol: '◎', label: 'About'   },
-  { id: 'work',    symbol: '◆', label: 'Work'    },
-  { id: 'stories', symbol: '△', label: 'Stories' },
-  { id: 'gallery', symbol: '◈', label: 'Gallery' },
+  { id: 'about', symbol: '◎', label: 'About' },
 ];
 
 export default function Nav() {
