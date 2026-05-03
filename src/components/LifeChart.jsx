@@ -4,8 +4,8 @@ import { Reveal, SectionLabel, GeoBorder } from './ui.jsx';
 import { LIFE_DATA, LIFE_EVENTS } from '../data.js';
 
 // SVG viewport constants
-const VW = 1000, VH = 320;
-const ML = 52, MR = 20, MT = 16, MB = 60;
+const VW = 1000, VH = 340;
+const ML = 52, MR = 20, MT = 16, MB = 80;
 const CW = VW - ML - MR;   // 928
 const CH = VH - MT - MB;   // 244
 const MAX_AGE = 27;
@@ -73,6 +73,27 @@ const PATHS = BANDS.map((band, bi) => {
   return { ...band, path: areaPath(topPts, botPts) };
 });
 
+// Precompute event dots with stacked row index per age
+const EVENT_DOTS = (() => {
+  const counts = {};
+  return LIFE_EVENTS.map((ev) => {
+    const row = counts[ev.age] ?? 0;
+    counts[ev.age] = row + 1;
+    return { ...ev, row };
+  });
+})();
+
+// Return ALL events at the nearest age within tolerance
+function eventsNearAge(age) {
+  let bestAge = null, bestDist = 1.5;
+  LIFE_EVENTS.forEach((e) => {
+    const d = Math.abs(e.age - age);
+    if (d < bestDist) { bestDist = d; bestAge = e.age; }
+  });
+  if (bestAge === null) return [];
+  return LIFE_EVENTS.filter((e) => e.age === bestAge);
+}
+
 // Linear interpolation for hover tooltip
 function interp(age) {
   const data = LIFE_DATA;
@@ -88,16 +109,9 @@ function interp(age) {
   }
 }
 
-function nearestEvent(age) {
-  let best = null, bestDist = 1.8;
-  LIFE_EVENTS.forEach((e) => {
-    const d = Math.abs(e.age - age);
-    if (d < bestDist) { bestDist = d; best = e; }
-  });
-  return best;
-}
-
 const AGE_TICKS = [0, 5, 10, 15, 20, 25, 27];
+const DOT_ROW_SPACING = 7;
+const DOT_BASE_Y = ay(0) + 30;
 
 export default function LifeChart() {
   const containerRef = useRef(null);
@@ -108,9 +122,9 @@ export default function LifeChart() {
     const pxX = e.clientX - rect.left;
     const vbX = pxX * (VW / rect.width);
     const age = Math.max(0, Math.min(MAX_AGE, (vbX - ML) / CW * MAX_AGE));
-    const event = nearestEvent(age);
+    const events = eventsNearAge(age);
     const vals = interp(age);
-    setHover({ age: Math.round(age * 10) / 10, pxX, event, vals });
+    setHover({ age: Math.round(age * 10) / 10, pxX, events, vals });
   };
 
   return (
@@ -151,7 +165,7 @@ export default function LifeChart() {
               ))}
 
               {/* Band outlines (top edges) */}
-              {PATHS.map((b, bi) => {
+              {PATHS.map((b) => {
                 const topPts = LIFE_DATA.map((d) => [ax(d.age), ay(cumTop(d, b.key))]);
                 return <path key={`line-${b.key}`} d={crPath(topPts)} fill="none" stroke={C.paper} strokeWidth="0.8" opacity="0.6" />;
               })}
@@ -170,10 +184,16 @@ export default function LifeChart() {
                 </g>
               ))}
 
-              {/* Life event dots */}
-              {LIFE_EVENTS.map((ev) => (
-                <circle key={ev.age} cx={ax(ev.age)} cy={ay(0) + 28}
-                  r="3" fill={C.ochre} opacity="0.55" />
+              {/* Life event dots — all 45, stacked by row when same age */}
+              {EVENT_DOTS.map((ev, i) => (
+                <circle
+                  key={i}
+                  cx={ax(ev.age)}
+                  cy={DOT_BASE_Y + ev.row * DOT_ROW_SPACING}
+                  r="2.5"
+                  fill={C.ochre}
+                  opacity="0.6"
+                />
               ))}
 
               {/* Hover line */}
@@ -200,10 +220,11 @@ export default function LifeChart() {
               <div style={{
                 position: 'absolute',
                 top: 12,
-                left: Math.min(hover.pxX + 14, containerRef.current?.offsetWidth - 200),
+                left: Math.min(hover.pxX + 14, (containerRef.current?.offsetWidth ?? 400) - 220),
                 background: C.ink,
                 padding: '12px 16px',
-                minWidth: 180,
+                minWidth: 200,
+                maxWidth: 280,
                 pointerEvents: 'none',
                 animation: 'fadeUp 0.15s ease-out',
               }}>
@@ -211,11 +232,23 @@ export default function LifeChart() {
                   Age {Math.floor(hover.age)}
                   {hover.age % 1 >= 0.5 ? '½' : ''}
                 </div>
-                {hover.event && (
-                  <div style={{ fontFamily: sans, fontSize: 11, color: C.ochreLight, lineHeight: 1.5, marginBottom: 8 }}>
-                    {hover.event.label}
+
+                {hover.events && hover.events.length > 0 && (
+                  <div style={{ marginBottom: 8 }}>
+                    {hover.events.map((ev, i) => (
+                      <div key={i} style={{
+                        fontFamily: sans, fontSize: 11, color: C.ochreLight,
+                        lineHeight: 1.5,
+                        marginBottom: i < hover.events.length - 1 ? 4 : 0,
+                        paddingLeft: 8,
+                        borderLeft: `1px solid ${C.ochre}55`,
+                      }}>
+                        {ev.label}
+                      </div>
+                    ))}
                   </div>
                 )}
+
                 {hover.vals && (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
                     {BANDS.slice().reverse().map((b) => (
@@ -246,7 +279,7 @@ export default function LifeChart() {
               </div>
             ))}
             <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
-              <div style={{ width: 6, height: 6, borderRadius: '50%', background: C.ochre, opacity: 0.55 }} />
+              <div style={{ width: 6, height: 6, borderRadius: '50%', background: C.ochre, opacity: 0.6 }} />
               <span style={{ fontFamily: mono, fontSize: 8.5, letterSpacing: '2px', textTransform: 'uppercase', color: C.inkFaint }}>
                 Key moments
               </span>
