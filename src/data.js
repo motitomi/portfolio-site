@@ -13,7 +13,7 @@ export const LIFE_DATA = [
   { age: 21, play: 20, learning: 35, making: 10, work: 35, civic:  0 }, // joined Paystack full-time
   { age: 22, play: 20, learning: 10, making: 10, work: 60, civic:  0 }, // moved into Treasury — work spikes
   { age: 23, play: 10, learning: 20, making: 10, work: 60, civic:  0 }, // Treasury Specialist, 4 markets
-  { age: 24, play: 50, learning: 20, making: 25, work:  5, civic:  0 }, // sabbatical — work drops, play/making spike
+  { age: 24, play: 25, learning: 20, making: 30, work: 25, civic:  0 }, // sabbatical year — making/play up, work present but lighter
   { age: 25, play: 14, learning: 30, making: 15, work: 40, civic:  1 }, // back + published Motitomi
   { age: 26, play: 10, learning: 20, making: 10, work: 40, civic: 20 }, // Sandbox, civic rises sharply
   { age: 27, play:  5, learning: 20, making:  5, work: 40, civic: 30 }, // MFB launch, civic dominant
