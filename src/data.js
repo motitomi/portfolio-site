@@ -10,13 +10,13 @@ export const LIFE_DATA = [
   { age: 15, play: 50, learning: 38, making:  9, work:  3, civic:  0 },
   { age: 16, play: 30, learning: 42, making: 16, work: 12, civic:  0 },
   { age: 18, play: 25, learning: 33, making: 20, work: 22, civic:  0 },
-  { age: 21, play: 20, learning: 35, making: 10, work: 35, civic:  0 },
-  { age: 22, play: 20, learning: 23, making: 10, work: 47, civic:  0 },
-  { age: 23, play: 15, learning: 15, making: 15, work: 55, civic:  0 },
-  { age: 24, play: 30, learning: 25, making: 33, work: 12, civic:  0 },
-  { age: 25, play: 20, learning: 26, making: 18, work: 35, civic:  1 },
-  { age: 26, play: 13, learning: 19, making: 18, work: 45, civic:  5 },
-  { age: 27, play: 12, learning: 20, making:  5, work: 40, civic: 23 },
+  { age: 21, play: 20, learning: 35, making: 10, work: 35, civic:  0 }, // joined Paystack full-time
+  { age: 22, play: 20, learning: 10, making: 10, work: 60, civic:  0 }, // moved into Treasury — work spikes
+  { age: 23, play: 10, learning: 20, making: 10, work: 60, civic:  0 }, // Treasury Specialist, 4 markets
+  { age: 24, play: 50, learning: 20, making: 25, work:  5, civic:  0 }, // sabbatical — work drops, play/making spike
+  { age: 25, play: 14, learning: 30, making: 15, work: 40, civic:  1 }, // back + published Motitomi
+  { age: 26, play: 10, learning: 20, making: 10, work: 40, civic: 20 }, // Sandbox, civic rises sharply
+  { age: 27, play:  5, learning: 20, making:  5, work: 40, civic: 30 }, // MFB launch, civic dominant
 ];
 
 export const LIFE_EVENTS = [
@@ -50,7 +50,7 @@ export const LIFE_EVENTS = [
   { age: 22, label: 'Completed NYSC' },
   { age: 22, label: 'Moved into Treasury — Ghana and South Africa' },
   { age: 23, label: 'First pottery session in Lagos' },
-  { age: 23, label: "Became Treasury Specialist — Ghana, SA, Kenya, Côte d'Ivoire" },
+  { age: 23, label: "Became Treasury Specialist — Ghana, South Africa, Kenya, Côte d'Ivoire" },
   { age: 24, label: 'Took my first sabbatical' },
   { age: 24, label: 'Learnt weaving, crochet and embroidery' },
   { age: 24, label: 'First pottery session in Zanzibar' },
@@ -58,10 +58,10 @@ export const LIFE_EVENTS = [
   { age: 25, label: 'Bought a bass guitar for my birthday' },
   { age: 25, label: 'Hiked Mount Karthala in Comoros — the summit' },
   { age: 25, label: 'Published Motitomi' },
-  { age: 26, label: 'Hosted crochet session with Fresco Gallery in 16by16' },
+  { age: 26, label: 'Hosted a crochet session with Fresco Gallery in 16by16' },
   { age: 26, label: 'Hosted a vision boarding session' },
-  { age: 26, label: 'Co-founded AI Governance Working Group at Paystack' },
-  { age: 26, label: 'Moved to Sandbox — a craft house experiment' },
+  { age: 26, label: 'Co-founded the AI Governance Working Group at Paystack' },
+  { age: 26, label: 'Moved apartments to pilot Sandbox — a craft house experiment' },
   { age: 27, label: 'Launched a Microfinance Bank' },
   { age: 27, label: 'Moved apartments after extreme flooding' },
   { age: 27, label: 'Managing a Bank' },
