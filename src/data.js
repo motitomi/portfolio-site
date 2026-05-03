@@ -32,7 +32,7 @@ export const LIFE_EVENTS = [
   { age: 14, label: 'Got my first personal computer' },
   { age: 15, label: 'Graduated from Babington Macaulay' },
   { age: 15, label: 'Got my first smartphone' },
-  { age: 16, label: 'First flight out of Lagos — to ALU, Mauritius' },
+  { age: 16, label: 'First flight out of Lagos — to the African Leadership University, Mauritius [ALU]' },
   { age: 16, label: 'Worked as a Residential Advisor at ALU' },
   { age: 16, label: 'First hike in Mauritius' },
   { age: 16, label: 'Learnt to swim in the ocean' },
@@ -62,7 +62,7 @@ export const LIFE_EVENTS = [
   { age: 26, label: 'Hosted a vision boarding session' },
   { age: 26, label: 'Co-founded AI Governance Working Group at Paystack' },
   { age: 26, label: 'Moved to Sandbox — a craft house experiment' },
-  { age: 27, label: 'Launched a Microfinance Bank License' },
+  { age: 27, label: 'Launched a Microfinance Bank' },
   { age: 27, label: 'Moved apartments after extreme flooding' },
   { age: 27, label: 'Managing a Bank' },
 ];
