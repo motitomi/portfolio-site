@@ -61,7 +61,7 @@ export default function About() {
                 transform: 'rotate(-1.2deg)',
               }}>
                 <img
-                  src="/tomi-portrait.jpg"
+                  src="/tomi-portrait-v2.jpg"
                   alt="Tomi Adesina"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
                 />
