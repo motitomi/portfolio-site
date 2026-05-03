@@ -61,9 +61,9 @@ export default function About() {
                 transform: 'rotate(-1.2deg)',
               }}>
                 <img
-                  src="https://picsum.photos/seed/tomi-portrait/600/800"
+                  src="/tomi-portrait.jpg"
                   alt="Tomi Adesina"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'sepia(0.1) saturate(0.92)' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
                 />
               </div>
               <div style={{
