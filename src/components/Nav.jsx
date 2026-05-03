@@ -96,10 +96,10 @@ export default function Nav() {
                     cursor: 'pointer',
                   }}
                 >
-                  <span style={{ fontFamily: mono, fontSize: 12, lineHeight: 1, opacity: isActive ? 1 : 0.55 }}>
+                  <span className="nav-link-symbol" style={{ fontFamily: mono, fontSize: 12, lineHeight: 1, opacity: isActive ? 1 : 0.55 }}>
                     {l.symbol}
                   </span>
-                  <span style={{ fontFamily: mono, fontSize: 9, letterSpacing: '2.5px', textTransform: 'uppercase', lineHeight: 1 }}>
+                  <span className="nav-link-label" style={{ fontFamily: mono, fontSize: 9, letterSpacing: '2.5px', textTransform: 'uppercase', lineHeight: 1 }}>
                     {l.label}
                   </span>
                 </button>
@@ -184,6 +184,12 @@ export default function Nav() {
         @media (max-width: 640px) {
           .nav-desktop { display: none !important; }
           .nav-mobile  { display: block !important; }
+        }
+        @media (min-width: 641px) {
+          .ta-stamp           { width: 34px !important; height: 34px !important; }
+          .ta-stamp span      { font-size: 10px !important; }
+          .nav-link-symbol    { font-size: 14px !important; }
+          .nav-link-label     { font-size: 11px !important; }
         }
       `}</style>
     </>

@@ -4,10 +4,10 @@ import { Reveal, GeoBorder, HandUnderline, SectionLabel } from './ui.jsx';
 import { SOCIALS, BOOKING_URL } from '../config.js';
 
 const STATS = [
-  { value: '1000+', label: 'sessions ·\nfacilitated'           },
-  { value: '100+',  label: 'reflections ·\npublished'          },
-  { value: '10+',   label: 'years · building\ncomplex systems' },
-  { value: '5',     label: 'markets managed ·\noperations footprint' },
+  { value: '1000+', label: 'sessions ·\nfacilitated'        },
+  { value: '100+',  label: 'reflections ·\npublished'       },
+  { value: '10+',   label: 'years ·\nbuilding systems'      },
+  { value: '5',     label: 'markets managed ·\noperations'  },
 ];
 
 const ICONS = {
@@ -79,21 +79,21 @@ export default function About() {
           <div>
             <Reveal>
               <SectionLabel color={C.terracotta}>About</SectionLabel>
-              <h2 style={{ fontFamily: serif, fontWeight: 700, fontSize: 'clamp(32px, 4vw, 48px)', color: C.ink, lineHeight: 1.05, margin: '0 0 24px' }}>
-                Building things
+              <h2 style={{ fontFamily: serif, fontWeight: 700, fontSize: 'clamp(32px, 4vw, 58px)', color: C.ink, lineHeight: 1.05, margin: '0 0 24px' }}>
+                On Building Things
               </h2>
               <HandUnderline color={C.terracotta} width={160} />
             </Reveal>
 
             <Reveal delay={0.08}>
-              <p style={{ fontFamily: serif, fontSize: 'clamp(14px, 1.8vw, 17px)', lineHeight: 1.85, color: C.inkMid, margin: '24px 0 16px' }}>
-                Lagos teaches you to build for uncertainty. I've been doing that professionally and personally for nearly a decade.
+              <p style={{ fontFamily: serif, fontSize: 'clamp(14px, 1.8vw, 20px)', lineHeight: 1.85, color: C.inkMid, margin: '24px 0 16px' }}>
+                Lagos teaches you to build in uncertainty. I've spent nearly a decade learning exactly that.
               </p>
-              <p style={{ fontFamily: serif, fontSize: 'clamp(14px, 1.8vw, 17px)', lineHeight: 1.85, color: C.inkMid, marginBottom: 16 }}>
-                At Paystack I've built invisible systems that keep complex organisations running — from treasury infrastructure across five African markets to launching a Microfinance bank from scratch. Through Motitomi I've built the spaces where people in this city can think, gather, and make things together.
+              <p style={{ fontFamily: serif, fontSize: 'clamp(14px, 1.8vw, 20px)', lineHeight: 1.85, color: C.inkMid, marginBottom: 16 }}>
+                At Paystack I've built systems that keep complex organisations running — treasury infrastructure across five African markets, a Microfinance Bank launched from regulatory approval to live operations, the compliance and operational architecture that makes scale possible. Through Motitomi I've built the spaces where people in this city can slow down, think, gather, and make things together.
               </p>
-              <p style={{ fontFamily: serif, fontStyle: 'italic', fontSize: 'clamp(13px, 1.6vw, 16px)', lineHeight: 1.85, color: C.inkLight, marginBottom: 32 }}>
-                I'm an artist, organiser, and obsessive learner who believes the best systems — financial or human — are designed with care. That is why a compliance framework and a craft workshop get the same attention from me because I love to design with intentionality.
+              <p style={{ fontFamily: serif, fontStyle: 'italic', fontSize: 'clamp(13px, 1.6vw, 19px)', lineHeight: 1.85, color: C.inkLight, marginBottom: 32 }}>
+                I'm an artist, organiser, and continuous learner who believes the best systems — financial or human — are designed with the same quality of attention. I bring the same care to a compliance framework that I bring to a craft workshop. That's the only way I know how to build.
               </p>
             </Reveal>
 
@@ -106,7 +106,7 @@ export default function About() {
               }}>
                 {STATS.map((s) => (
                   <div key={s.value}>
-                    <div style={{ fontFamily: serif, fontWeight: 700, fontSize: 'clamp(22px, 3vw, 30px)', color: C.ochre, lineHeight: 1, marginBottom: 6 }}>
+                    <div style={{ fontFamily: serif, fontWeight: 700, fontSize: 'clamp(22px, 3vw, 36px)', color: C.ochre, lineHeight: 1, marginBottom: 6 }}>
                       {s.value}
                     </div>
                     <div style={{ fontFamily: mono, fontSize: 8.5, letterSpacing: '1.5px', textTransform: 'uppercase', color: C.inkFaint, lineHeight: 1.6, whiteSpace: 'pre-line' }}>
@@ -131,7 +131,7 @@ export default function About() {
                       rel="noopener noreferrer"
                       title={s.label}
                       style={{
-                        width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        width: 54, height: 54, display: 'flex', alignItems: 'center', justifyContent: 'center',
                         border: `1px solid ${C.cream}`, textDecoration: 'none',
                         color: C.inkMid, transition: 'all 0.2s ease',
                       }}

@@ -5,6 +5,7 @@ import { GeoBorder, TickerTape } from './ui.jsx';
 const GREETINGS = [
   { text: 'Ẹ káàbọ̀',  lang: 'Yoruba',     dir: 'ltr', script: 'latin'  },
   { text: 'Ẹ kúlé',    lang: 'Yoruba',     dir: 'ltr', script: 'latin'  },
+  { text: 'Nnọọ',      lang: 'Igbo',       dir: 'ltr', script: 'latin'  },
   { text: 'Welcome',   lang: 'English',    dir: 'ltr', script: 'latin'  },
   { text: 'Hello',     lang: 'English',    dir: 'ltr', script: 'latin'  },
   { text: '你好',       lang: 'Mandarin',   dir: 'ltr', script: 'cjk'    },
@@ -63,7 +64,7 @@ export default function Hero() {
           {/* Name display */}
           <h1 style={{
             fontFamily: serif, fontWeight: 700,
-            fontSize: 'clamp(48px, 8vw, 88px)',
+            fontSize: 'clamp(48px, 8vw, 106px)',
             lineHeight: 0.92, letterSpacing: '-2px',
             color: C.ink, margin: '0 0 32px',
             animation: 'fadeUp 0.8s 0.2s ease-out both',
@@ -74,7 +75,7 @@ export default function Hero() {
           {/* Tagline */}
           <p style={{
             fontFamily: serif, fontStyle: 'italic',
-            fontSize: 'clamp(15px, 2.2vw, 20px)', lineHeight: 1.7,
+            fontSize: 'clamp(15px, 2.2vw, 24px)', lineHeight: 1.7,
             color: C.inkMid, maxWidth: 480,
             animation: 'fadeUp 0.8s 0.38s ease-out both',
           }}>

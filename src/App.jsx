@@ -1,12 +1,12 @@
 import { C } from './tokens.js';
-import Nav     from './components/Nav.jsx';
-import Hero    from './components/Hero.jsx';
-import About   from './components/About.jsx';
+import Nav      from './components/Nav.jsx';
+import Hero     from './components/Hero.jsx';
+import About    from './components/About.jsx';
 import LifeChart from './components/LifeChart.jsx';
-import Work    from './components/Work.jsx';
-import Stories from './components/Stories.jsx';
-import Gallery from './components/Gallery.jsx';
-import Footer  from './components/Footer.jsx';
+// import Work    from './components/Work.jsx';    — saved in Work.jsx,    restore when ready
+// import Stories from './components/Stories.jsx'; — saved in Stories.jsx, restore when ready
+// import Gallery from './components/Gallery.jsx'; — saved in Gallery.jsx, restore when ready
+// import Footer  from './components/Footer.jsx';  — saved in Footer.jsx,  restore when ready
 
 export default function App() {
   return (
@@ -18,11 +18,11 @@ export default function App() {
         </section>
         <About />
         <LifeChart />
-        <Work />
-        <Stories />
-        <Gallery />
+        {/* <Work />    */}
+        {/* <Stories /> */}
+        {/* <Gallery /> */}
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
