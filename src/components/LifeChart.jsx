@@ -122,7 +122,7 @@ export default function LifeChart() {
             Life in Time
           </h2>
           <p style={{ fontFamily: serif, fontStyle: 'italic', fontSize: 14, color: C.inkLight, marginBottom: 36 }}>
-            Age 0 → 27 · born 13 July 1998 · hover to explore
+            Hover to explore
           </p>
         </Reveal>
 
