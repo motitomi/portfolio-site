@@ -109,6 +109,46 @@ function interp(age) {
   }
 }
 
+function TooltipContent({ hover }) {
+  return (
+    <>
+      <div style={{ fontFamily: serif, fontWeight: 700, fontSize: 13, color: C.paper, marginBottom: 6 }}>
+        Age {Math.floor(hover.age)}{hover.age % 1 >= 0.5 ? '½' : ''}
+      </div>
+      {hover.events?.length > 0 && (
+        <div style={{ marginBottom: 8 }}>
+          {hover.events.map((ev, i) => (
+            <div key={i} style={{
+              fontFamily: sans, fontSize: 11, color: C.ochreLight,
+              lineHeight: 1.5,
+              marginBottom: i < hover.events.length - 1 ? 4 : 0,
+              paddingLeft: 8,
+              borderLeft: `1px solid ${C.ochre}55`,
+            }}>
+              {ev.label}
+            </div>
+          ))}
+        </div>
+      )}
+      {hover.vals && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+          {BANDS.slice().reverse().map((b) => (
+            <div key={b.key} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <div style={{ width: 8, height: 8, background: b.color, flexShrink: 0 }} />
+              <span style={{ fontFamily: mono, fontSize: 8, letterSpacing: '1px', textTransform: 'uppercase', color: C.inkFaint }}>
+                {b.label}
+              </span>
+              <span style={{ fontFamily: mono, fontSize: 8, color: C.paper, marginLeft: 'auto' }}>
+                {hover.vals[b.key]}%
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+    </>
+  );
+}
+
 const AGE_TICKS = [0, 5, 10, 15, 20, 25, 27];
 const DOT_ROW_SPACING = 7;
 const DOT_BASE_Y = ay(0) + 30;
@@ -116,15 +156,30 @@ const DOT_BASE_Y = ay(0) + 30;
 export default function LifeChart() {
   const containerRef = useRef(null);
   const [hover, setHover] = useState(null);
+  const linger = useRef(null);
 
-  const handleMouseMove = (e) => {
+  const resolve = (clientX, isTouch = false) => {
     const rect = containerRef.current.getBoundingClientRect();
-    const pxX = e.clientX - rect.left;
+    const pxX = clientX - rect.left;
     const vbX = pxX * (VW / rect.width);
     const age = Math.max(0, Math.min(MAX_AGE, (vbX - ML) / CW * MAX_AGE));
     const events = eventsNearAge(age);
     const vals = interp(age);
-    setHover({ age: Math.round(age * 10) / 10, pxX, events, vals });
+    setHover({ age: Math.round(age * 10) / 10, pxX, events, vals, isTouch });
+  };
+
+  const handleMouseMove = (e) => resolve(e.clientX, false);
+
+  const handleTouchStart = (e) => {
+    if (linger.current) clearTimeout(linger.current);
+    resolve(e.touches[0].clientX, true);
+  };
+  const handleTouchMove = (e) => {
+    if (linger.current) clearTimeout(linger.current);
+    resolve(e.touches[0].clientX, true);
+  };
+  const handleTouchEnd = () => {
+    linger.current = setTimeout(() => setHover(null), 1400);
   };
 
   return (
@@ -136,7 +191,7 @@ export default function LifeChart() {
             Life in Time
           </h2>
           <p style={{ fontFamily: serif, fontStyle: 'italic', fontSize: 14, color: C.inkLight, marginBottom: 36 }}>
-            Hover to explore
+            Touch or hover to explore
           </p>
         </Reveal>
 
@@ -144,9 +199,12 @@ export default function LifeChart() {
         <Reveal delay={0.1}>
           <div
             ref={containerRef}
-            style={{ position: 'relative', cursor: 'crosshair' }}
+            style={{ position: 'relative', cursor: 'crosshair', touchAction: 'pan-y' }}
             onMouseMove={handleMouseMove}
             onMouseLeave={() => setHover(null)}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
             <svg
               viewBox={`0 0 ${VW} ${VH}`}
@@ -215,8 +273,8 @@ export default function LifeChart() {
               </g>
             </svg>
 
-            {/* Hover tooltip */}
-            {hover && (
+            {/* Desktop tooltip — floats next to cursor */}
+            {hover && !hover.isTouch && (
               <div style={{
                 position: 'absolute',
                 top: 12,
@@ -228,48 +286,29 @@ export default function LifeChart() {
                 pointerEvents: 'none',
                 animation: 'fadeUp 0.15s ease-out',
               }}>
-                <div style={{ fontFamily: serif, fontWeight: 700, fontSize: 13, color: C.paper, marginBottom: 6 }}>
-                  Age {Math.floor(hover.age)}
-                  {hover.age % 1 >= 0.5 ? '½' : ''}
-                </div>
-
-                {hover.events && hover.events.length > 0 && (
-                  <div style={{ marginBottom: 8 }}>
-                    {hover.events.map((ev, i) => (
-                      <div key={i} style={{
-                        fontFamily: sans, fontSize: 11, color: C.ochreLight,
-                        lineHeight: 1.5,
-                        marginBottom: i < hover.events.length - 1 ? 4 : 0,
-                        paddingLeft: 8,
-                        borderLeft: `1px solid ${C.ochre}55`,
-                      }}>
-                        {ev.label}
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {hover.vals && (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-                    {BANDS.slice().reverse().map((b) => (
-                      <div key={b.key} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                        <div style={{ width: 8, height: 8, background: b.color, flexShrink: 0 }} />
-                        <span style={{ fontFamily: mono, fontSize: 8, letterSpacing: '1px', textTransform: 'uppercase', color: C.inkFaint }}>
-                          {b.label}
-                        </span>
-                        <span style={{ fontFamily: mono, fontSize: 8, color: C.paper, marginLeft: 'auto' }}>
-                          {hover.vals[b.key]}%
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                )}
+                <TooltipContent hover={hover} />
               </div>
             )}
           </div>
 
+          {/* Mobile info panel — below chart, no finger overlap */}
+          <div style={{
+            minHeight: 80,
+            marginTop: 8,
+            background: hover?.isTouch ? C.ink : 'transparent',
+            padding: hover?.isTouch ? '14px 16px' : '14px 0',
+            transition: 'background 0.2s ease',
+          }}>
+            {hover?.isTouch
+              ? <TooltipContent hover={hover} />
+              : <p style={{ fontFamily: mono, fontSize: 9, letterSpacing: '2px', textTransform: 'uppercase', color: C.inkFaint, margin: 0 }}>
+                  Drag your finger across the chart ↑
+                </p>
+            }
+          </div>
+
           {/* Legend */}
-          <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', marginTop: 24 }}>
+          <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', marginTop: 16 }}>
             {BANDS.slice().reverse().map((b) => (
               <div key={b.key} style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
                 <div style={{ width: 12, height: 12, background: b.color, border: `1px solid ${C.cream}` }} />
