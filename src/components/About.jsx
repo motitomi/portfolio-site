@@ -70,7 +70,7 @@ export default function About() {
                 marginTop: 16, fontFamily: mono, fontSize: 7.5, letterSpacing: '2.5px',
                 textTransform: 'uppercase', color: C.inkFaint, textAlign: 'center',
               }}>
-                Lagos, Nigeria · 2026
+                Nairobi, Kenya · 2026
               </div>
             </div>
           </Reveal>
