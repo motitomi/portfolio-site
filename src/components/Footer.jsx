@@ -6,7 +6,7 @@ const SOCIAL_SYMBOLS = {
   linkedin:  'in',
   instagram: '◉',
   tiktok:    'tt',
-  notion:    '◇',
+  substack:  '◇',
 };
 
 export default function Footer() {
@@ -45,7 +45,7 @@ export default function Footer() {
                 Navigate
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                {['about', 'work', 'stories', 'gallery'].map((id) => (
+                {['about'].map((id) => (
                   <button key={id} onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })} style={{
                     background: 'none', border: 'none', padding: 0, textAlign: 'left',
                     fontFamily: mono, fontSize: 9, letterSpacing: '2px', textTransform: 'uppercase',

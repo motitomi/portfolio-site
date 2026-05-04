@@ -1,5 +1,5 @@
 export const BOOKING_URL = 'https://calendar.notion.so/meet/tomiadesina/talk-to-me';
-export const EMAIL       = 'hello@motitomi.com';
+export const EMAIL       = 'tomi@motitomi.com';
 
 export const SOCIALS = [
   { key: 'linkedin',  label: 'LinkedIn',  href: 'https://linkedin.com/in/adesina-tomi' },
