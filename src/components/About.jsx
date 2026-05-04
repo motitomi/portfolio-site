@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { C, serif, mono } from '../tokens.js';
 import { Reveal, GeoBorder, HandUnderline, SectionLabel } from './ui.jsx';
-import { SOCIALS, BOOKING_URL } from '../config.js';
+import { SOCIALS, BOOKING_URL, EMAIL } from '../config.js';
 
 const STATS = [
   { value: '1000+', label: 'sessions ·\nfacilitated'        },
@@ -168,6 +168,19 @@ export default function About() {
                 >
                   <span style={{ fontSize: 14 }}>◷</span>
                   <span>Let's find time</span>
+                </a>
+                <a href={`mailto:${EMAIL}`}
+                  style={{
+                    marginLeft: 8, fontFamily: mono, fontSize: 8.5, letterSpacing: '2px',
+                    textTransform: 'uppercase', color: C.inkFaint, textDecoration: 'none',
+                    display: 'flex', alignItems: 'center', gap: 6,
+                    transition: 'color 0.2s ease',
+                  }}
+                  onMouseOver={e => { e.currentTarget.style.color = C.terracotta; }}
+                  onMouseOut={e => { e.currentTarget.style.color = C.inkFaint; }}
+                >
+                  <span style={{ fontSize: 14 }}>✉</span>
+                  <span>{EMAIL}</span>
                 </a>
               </div>
             </Reveal>

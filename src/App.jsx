@@ -6,7 +6,7 @@ import LifeChart from './components/LifeChart.jsx';
 // import Work    from './components/Work.jsx';    — saved in Work.jsx,    restore when ready
 // import Stories from './components/Stories.jsx'; — saved in Stories.jsx, restore when ready
 // import Gallery from './components/Gallery.jsx'; — saved in Gallery.jsx, restore when ready
-import Footer  from './components/Footer.jsx';
+// import Footer  from './components/Footer.jsx';  — saved in Footer.jsx, restore when ready
 
 export default function App() {
   return (
@@ -22,7 +22,7 @@ export default function App() {
         {/* <Stories /> */}
         {/* <Gallery /> */}
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
